@@ -2,10 +2,11 @@
   "name": "g1-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec swc-node src/index.js",
+    "dev": "nodemon --exec swc-node src/index.mjs",
     "build": "swc src -d dist"
   },
   "keywords": [],
