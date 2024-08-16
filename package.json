@@ -24,6 +24,7 @@
   "devDependencies": {
     "@swc/cli": "^0.4.0",
     "@swc/core": "^1.7.10",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "swc-node": "^1.0.0"
   }
 }
