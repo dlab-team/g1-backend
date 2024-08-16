@@ -1,4 +1,4 @@
-const { Pool } = require('pg')
+import { Pool } from 'pg'
 require('dotenv').config()
 
 const { DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT } = process.env
@@ -14,4 +14,4 @@ const pool = new Pool({
     idleTimeoutMillis: 30000
 })
 
-module.exports = pool
+export default pool

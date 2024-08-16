@@ -37,6 +37,8 @@ CREATE TABLE empleos (
   nombre_empresa TEXT,
   creado_en TIMESTAMP,
   lista_id BIGINT REFERENCES listas(id)
+  usuario_id BIGINT
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
 -- Tabla de aplicaciones con cambio de columna estado a categoría
@@ -44,7 +46,7 @@ CREATE TABLE aplicaciones (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   empleo_id BIGINT REFERENCES empleos(id),
   usuario_id BIGINT REFERENCES usuarios(id),
-  "categoría" TEXT,
+  categoría TEXT,
   fecha_aplicacion TIMESTAMP
 );
 

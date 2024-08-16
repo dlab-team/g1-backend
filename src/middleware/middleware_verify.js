@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+import jwt  from ('jsonwebtoken')
 const { JWT_SECRET, JWT_ADMIN } = process.env
 
 export const authMiddleware = (req, res, next) => {
