@@ -9,7 +9,7 @@ CREATE TABLE usuarios (
   educacion_id BIGINT REFERENCES educacion(id),
   foto TEXT,
   experiencia TEXT,
-  actualizado_en DATE,
+  actualizado_al DATE,
   rol_id BIGINT REFERENCES roles(id),
   notas TEXT
 );
