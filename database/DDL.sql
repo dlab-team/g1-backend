@@ -44,7 +44,7 @@ CREATE TABLE aplicaciones (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   empleo_id BIGINT REFERENCES empleos(id),
   usuario_id BIGINT REFERENCES usuarios(id),
-  categoría TEXT,
+  categoria TEXT,
   fecha_aplicacion TIMESTAMP
 );
 
