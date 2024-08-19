@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec swc-node src/index.js",
-    "build": "swc src -d dist"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.7.4",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -19,12 +20,10 @@
     "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.12.0",
+    "pg-pool": "^3.6.2",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@swc/cli": "^0.4.0",
-    "@swc/core": "^1.7.10",
-    "nodemon": "^3.1.4",
-    "swc-node": "^1.0.0"
+    "nodemon": "^3.1.4"
   }
 }
