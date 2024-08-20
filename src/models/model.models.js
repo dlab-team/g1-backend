@@ -8,3 +8,4 @@ export const getPaises = async () => {
         throw new Error('Error al obtener la lista de países');
     }
 };
+
