@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { fetchAndSaveCountries } from '../controllers/model.controller.js';
+import { autorizacionUsuario, autorizacionAdmin } from '../middleware/middleware_verify.js'
 
 const router = Router();
 

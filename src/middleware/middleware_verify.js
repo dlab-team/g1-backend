@@ -1,7 +1,7 @@
 import jwt  from ('jsonwebtoken')
 const { JWT_SECRET, JWT_ADMIN } = process.env
 
-export const authMiddleware = (req, res, next) => {
+export const autorizacionUsuario = (req, res, next) => {
   try {
     req.user = verifyToken(extractToken(req))
     next()
@@ -29,7 +29,7 @@ const verifyAdminToken = (token) => {
   return payload
 }
 
-export const authMiddlewareAdmin = (req, res, next) => {
+export const autorizacionAdmin = (req, res, next) => {
   try {
     req.user = verifyAdminToken(extractToken(req))
     next()
