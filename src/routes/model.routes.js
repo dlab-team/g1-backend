@@ -4,6 +4,6 @@ import { autorizacionUsuario, autorizacionAdmin } from '../middleware/middleware
 
 const router = Router();
 
-router.get('/paises/fetch', fetchAndSaveCountries);
+router.get('/paises/fetch', autorizacionUsuario, fetchAndSaveCountries);
 
 export default router;
