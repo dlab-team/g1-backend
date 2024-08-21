@@ -30,3 +30,14 @@ export const insertAplicacion = async (data) => {
         return error
     }
 }
+
+export const borrarAplicacion = async (id) => {
+try {
+    const consulta = 'DELETE from aplicaciones WHERE id = $1;'
+    const values = [id]
+    return await data(consulta, values)
+} catch (error) {
+    
+}
+    
+}
