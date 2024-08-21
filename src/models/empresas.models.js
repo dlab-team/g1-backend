@@ -1,4 +1,4 @@
-const pool = require('../../database/config.js')
+import { pool } from "../../database/config";
 
 
 // Crear una nueva empresa
