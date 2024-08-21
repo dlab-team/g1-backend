@@ -1,5 +1,6 @@
 import data from './querys.js'
 
+// devuelve todos los empleos
 export const todosEmpleos = async (id) => {
     try {
         const consulta ='SELECT * FROM empleos WHERE usuario_id = $1;'
@@ -10,6 +11,7 @@ export const todosEmpleos = async (id) => {
     }
 }
 
+// devuelve empleo por id
 export const empleoById = async (id) => {
     try {
         const consulta ='SELECT * FROM empleos WHERE id = $1;'
@@ -20,6 +22,7 @@ export const empleoById = async (id) => {
     }
 }
 
+// inserta empleo
 export const insertEmpleo = async (data) => {
     const { id, cargo, descripcion, ubicacion, modalidad, salario, nombreEmpresa, creadoEn, listaId, usuarioId } = data
     try {
@@ -31,6 +34,7 @@ export const insertEmpleo = async (data) => {
     }
 }
 
+// borra empleo por id
 export const deleteEmpleo = async (id) => {
     try {
         const consulta ='DELETE from empleos WHERE id = $1;'
