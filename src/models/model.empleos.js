@@ -30,3 +30,13 @@ export const insertEmpleo = async (data) => {
         return error
     }
 }
+
+export const deleteEmpleo = async (id) => {
+    try {
+        const consulta ='DELETE from empleos WHERE id = $1;'
+        const values = [id]
+       return await data(consulta, values)
+    } catch (error) {
+        return error
+    }
+}
