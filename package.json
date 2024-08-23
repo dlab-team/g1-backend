@@ -13,10 +13,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "chalk": "^5.3.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "swc-node": "^1.0.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@swc/cli": "^0.4.0",
+    "@swc/cli": "^0.1.41",
     "@swc/core": "^1.7.10",
     "nodemon": "^3.1.4"
   }
