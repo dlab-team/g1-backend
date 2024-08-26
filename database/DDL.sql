@@ -60,7 +60,12 @@ CREATE TABLE listas (
 CREATE TABLE objetivos (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   nombre TEXT,
+  objetivo TEXT,
   estado BOOLEAN,
+  descripcion TEXT,
+  instrucciones TEXT,
+  tipo VARCHAR,
+  plazo DATE
   usuario_id BIGINT REFERENCES usuarios(id)
 );
 
