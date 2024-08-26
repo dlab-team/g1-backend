@@ -1,7 +1,16 @@
 import data from './querys.js'
 
 // devuelve todos los empleos
-export const todosEmpleos = async (id) => {
+export const todosEmpleos = async () => {
+    try {
+        const consulta ='SELECT * FROM empleos;'
+        const values = [id]
+       return await data(consulta, values)
+    } catch (error) {
+        return error
+    }
+}
+export const empleosPorUsuario = async (id) => {
     try {
         const consulta ='SELECT * FROM empleos WHERE usuario_id = $1;'
         const values = [id]
@@ -10,6 +19,7 @@ export const todosEmpleos = async (id) => {
         return error
     }
 }
+
 
 // devuelve empleo por id
 export const empleoById = async (id) => {
