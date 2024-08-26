@@ -2,28 +2,28 @@
   "name": "g1-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js",
+    "dev": "nodemon src/index.mjs",
     "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.4",
-    "bcryptjs": "^2.4.3",
+    "chalk": "^5.3.0",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "express-validator": "^7.2.0",
-    "jsonwebtoken": "^9.0.2",
     "pg": "^8.12.0",
-    "pg-pool": "^3.6.2",
-    "uuid": "^10.0.0"
+    "swc-node": "^1.0.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@swc/cli": "^0.1.41",
+    "@swc/core": "^1.7.10",
     "nodemon": "^3.1.4"
   }
 }
