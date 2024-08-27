@@ -21,10 +21,10 @@ export const todosAplicacionesPorEmpleo = async (id) => {
 }
 
 export const insertAplicacion = async (data) => {
-    const { id, empleoId, usuarioId, categoria, fechaAplicacion } = data
+    const { empleoId, usuarioId, categoria, fechaAplicacion } = data
     try {
-        const consulta ='INSERT INTO aplicaciones (id, empleo_id, usuario_id, categoría, fecha_aplicacion);'
-        const values = [id, empleoId, usuarioId, categoria, fechaAplicacion]
+        const consulta ='INSERT INTO aplicaciones (empleo_id, usuario_id, categoría, fecha_aplicacion) VALUES ($1, $2, $3, $4);'
+        const values = [empleoId, usuarioId, categoria, fechaAplicacion]
        return await data(consulta, values)
     } catch (error) {
         return error
@@ -37,7 +37,7 @@ try {
     const values = [id]
     return await data(consulta, values)
 } catch (error) {
-    
+    return error
 }
     
 }

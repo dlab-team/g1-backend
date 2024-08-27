@@ -56,14 +56,6 @@ CREATE TABLE listas (
   nombre TEXT
 );
 
--- Tabla de objetivos con referencia a usuarios
-CREATE TABLE objetivos (
-  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  nombre TEXT,
-  estado BOOLEAN,
-  usuario_id BIGINT REFERENCES usuarios(id)
-);
-
 -- Tabla de actividades con referencia a usuarios
 CREATE TABLE actividades (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
