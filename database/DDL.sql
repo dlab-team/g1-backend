@@ -41,12 +41,12 @@ CREATE TABLE empleos (
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
--- Tabla de aplicaciones con cambio de columna estado a categoría
+-- Tabla de aplicaciones vinculando empleo con usuario
 CREATE TABLE aplicaciones (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   empleo_id BIGINT REFERENCES empleos(id),
   usuario_id BIGINT REFERENCES usuarios(id),
-  categoria TEXT,
+  categoria_id BIGINT REFERENCES categorias(id),
   fecha_aplicacion TIMESTAMP
 );
 
@@ -68,7 +68,7 @@ CREATE TABLE objetivos (
 CREATE TABLE actividades (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   titulo TEXT,
-  categoria TEXT,
+  categoria_id BIGINT REFERENCES categorias(id),
   fecha_inicio DATE,
   fecha_fin DATE,
   nota TEXT,
@@ -86,3 +86,32 @@ CREATE TABLE empresas (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   nombre TEXT
 );
+
+-- Tabla de objetivos
+
+CREATE TABLE objetivos (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  nombre TEXT, 
+  descripcion TEXT,
+  intrucciones TEXT,
+  tipo VARCHAR(30),
+  cumplimiento INT,
+  fecha_creacion DATE,
+  estado BOOLEAN,
+  plazo TEXT
+);
+
+-- Tabla de participantes vinculados a un objetivo
+
+CREATE TABLE participantes (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  participante_id BIGINT REFERENCES usuarios(id),
+  objetivo_id BIGINT REFERENCES usuarios(id)
+);
+
+-- Tabla de categorias
+
+CREATE TABLE categorias (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  categoria TEXT  
+)
