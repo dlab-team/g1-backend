@@ -11,3 +11,4 @@ ADD CONSTRAINT roles_nombre_unique UNIQUE (nombre);
 
 INSERT INTO listas (id, nombre) VALUES (1, 'deseos'), (2, 'postulado'), (3, 'oferta'), (4, 'rechazado');
 
+ALTER TABLE empresas ADD COLUMN is_deleted BOOLEAN DEFAULT FALSE;
