@@ -12,6 +12,6 @@ app.use("/", rutas)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(chalk.blue('        🔥  Server On  🔥'));
+  console.log(chalk.blue('        🔥  Server Onn  🔥'));
   console.log(chalk.grey(`Click to open: ${chalk.underline(`http://localhost:${PORT}`)}`));
 });
