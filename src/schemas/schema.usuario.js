@@ -1,21 +1,16 @@
 import { z } from 'zod'
 
 
-nombre, apellido, correo, pais, educacion, cargo, experiencia, contraseña
-
-const movieSchema = object({
-    nombre: string({
+export const usuarioSchema = z.object({
+    nombre: z.string({
      invalid_type_error: 'Nombre no es valido',
      required_error: 'Nombre es requerido',
     }),
-    apellido: string({
+    apellido: z.string({
      invalid_type_error: 'Apellido no es valido',
      required_error: 'Apellido es requerido',
     }),
-    correo: string().correo()({
-      invalid_type_error: 'Nombre no es valido',
-      required_error: 'Nombre es requerido',
-    }),
+    correo: z.string().email(),
     pais: z.enum([
     'Estados Unidos',
     'Canadá',
@@ -56,15 +51,8 @@ const movieSchema = object({
     .regex(/[@$!%*?&#]/, "La contraseña debe contener al menos un carácter especial")
  })
 
- function validateMovie (input) {
-    return movieSchema.safeParse(input)
+ function validateUsuario (input) {
+    return usuarioSchema.safeParse(input)
 
  }
- function validatePartialMovie (input) {
-   return movieSchema.partial().safeParse(input)
- }
-
-export default {
-   validateMovie,
-   validatePartialMovie
-}
+ 

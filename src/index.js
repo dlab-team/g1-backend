@@ -1,6 +1,6 @@
 import express from 'express';
 import chalk from 'chalk';
-import rutas from './rutas/rutas.js';
+import rutas from './routes/rutas.js';
 import cors from 'cors';
 
 const app = express();

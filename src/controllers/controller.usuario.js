@@ -1,5 +1,5 @@
-import { pool } from '../db'; 
-import { usuarioSchema } from '../components/schema'; 
+import { pool } from '../../database/config.js'; 
+import { usuarioSchema } from '../schemas/schema.usuario.js'; 
 import crypto from 'crypto'; 
 
 
