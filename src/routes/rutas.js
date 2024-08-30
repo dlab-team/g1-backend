@@ -4,7 +4,7 @@ import { usuariosLog } from "../middleware/usuarios.middelware.js";
 
 const router = express.Router();
 
-router.get('/',usuariosLog,)
-router.post('/',usuariosLog,agregarUsuario)
+//router.get('/',usuariosLog,)
+router.post('/usuario/newUsuario',usuariosLog,agregarUsuario)
 
 export default router;

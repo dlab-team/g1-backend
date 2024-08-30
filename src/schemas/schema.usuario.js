@@ -34,13 +34,13 @@ export const usuarioSchema = z.object({
     'Turquía'
     ]),
     educacion: z.enum([
-
+    'Tecnico Superior'
     ]),
     cargo: z.enum([
-
+    'Full Stack'
     ]),
     experiencia: z.enum([
-
+    'Un Año'
     ]),
     contraseña: z.string()
     .min(8, "La contraseña debe tener al menos 8 caracteres")
@@ -55,4 +55,3 @@ export const usuarioSchema = z.object({
     return usuarioSchema.safeParse(input)
 
  }
- 
