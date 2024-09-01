@@ -2,8 +2,9 @@
 CREATE TABLE usuarios (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   nombre TEXT,
+  apellido TEXT,
   email TEXT,
-  contrasena TEXT,
+  password TEXT,
   creado_en TIMESTAMP,
   pais_id BIGINT REFERENCES paises(id),
   educacion_id BIGINT REFERENCES educacion(id),
@@ -13,7 +14,6 @@ CREATE TABLE usuarios (
   rol_id BIGINT REFERENCES roles(id),
   notas TEXT
 );
-
 -- Tabla de países
 CREATE TABLE paises (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
