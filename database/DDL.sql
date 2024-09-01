@@ -8,7 +8,7 @@ CREATE TABLE usuarios (
   pais_id BIGINT REFERENCES paises(id),
   educacion_id BIGINT REFERENCES educacion(id),
   foto TEXT,
-  experiencia TEXT,
+  experiencia_id BIGINT REFERENCES experiencia(id),
   actualizado_al DATE,
   rol_id BIGINT REFERENCES roles(id),
   notas TEXT
@@ -120,3 +120,13 @@ CREATE TABLE categorias (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   categoria TEXT  
 )
+
+-- Tabla de experiencias
+CREATE TABLE experiencia (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  titulo tipo VARCHAR(80),
+  descripcion TEXT,
+  desde DATE,
+  hasta DATE
+)
+
