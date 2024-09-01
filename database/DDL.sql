@@ -8,10 +8,10 @@ CREATE TABLE usuarios (
   pais_id BIGINT REFERENCES paises(id),
   educacion_id BIGINT REFERENCES educacion(id),
   foto TEXT,
-  experiencia_id BIGINT REFERENCES experiencia(id),
   actualizado_al DATE,
   rol_id BIGINT REFERENCES roles(id),
-  notas TEXT
+  notas TEXT,
+  activo BOOLEAN
 );
 
 -- Tabla de países
@@ -31,12 +31,12 @@ CREATE TABLE empleos (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   cargo TEXT,
   descripcion TEXT,
-  ubicacion TEXT,
-  modalidad TEXT,
   salario TEXT,
   nombre_empresa TEXT,
   creado_en TIMESTAMP,
   lista_id BIGINT REFERENCES listas(id)
+  modalidad_id BIGINT REFERENCES modalidad(id),
+  ubicacion_id BIGINT REFERENCES ubicacion(id),
   usuario_id BIGINT
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
@@ -65,7 +65,8 @@ CREATE TABLE objetivos (
   descripcion TEXT,
   instrucciones TEXT,
   tipo VARCHAR,
-  plazo DATE
+  plazo DATE,
+  cumplimiento INT,
   usuario_id BIGINT REFERENCES usuarios(id)
 );
 
@@ -83,7 +84,7 @@ CREATE TABLE actividades (
 -- Tabla de roles
 CREATE TABLE roles (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  nombre TEXT
+  rol TEXT
 );
 
 -- Tabla de empresas (nueva versión)
@@ -92,19 +93,6 @@ CREATE TABLE empresas (
   nombre TEXT
 );
 
--- Tabla de objetivos
-
-CREATE TABLE objetivos (
-  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  nombre TEXT, 
-  descripcion TEXT,
-  intrucciones TEXT,
-  tipo VARCHAR(30),
-  cumplimiento INT,
-  fecha_creacion DATE,
-  estado BOOLEAN,
-  plazo TEXT
-);
 
 -- Tabla de participantes vinculados a un objetivo
 
@@ -127,6 +115,16 @@ CREATE TABLE experiencia (
   titulo tipo VARCHAR(80),
   descripcion TEXT,
   desde DATE,
-  hasta DATE
+  hasta DATE,
+  usuario_id BIGINT REFERENCES usuarios(id)
 )
 
+CREATE TABLE modalidad (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  modalidad TEXT  
+)
+
+CREATE TABLE ubicacion (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  ubicacion TEXT  
+)
