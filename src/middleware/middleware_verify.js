@@ -1,4 +1,4 @@
-import jwt  from ('jsonwebtoken')
+import jwt  from 'jsonwebtoken'
 const { JWT_SECRET, JWT_ADMIN } = process.env
 
 export const autorizacionUsuario = (req, res, next) => {
