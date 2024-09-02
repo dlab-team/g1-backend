@@ -1,4 +1,4 @@
-import pool from '../database/config.js'
+import pool from '../../database/config.js'
 
 const data = (query, values) => pool
   .query(query, values)

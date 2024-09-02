@@ -1,4 +1,4 @@
-import data from './querys.js'
+import data from './query.js'
 
 // devuelve todos los empleos
 export const todosEmpleos = async () => {

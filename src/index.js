@@ -1,13 +1,14 @@
 import express from 'express';
 import chalk from 'chalk';
-import rutas from './rutas/rutas.js';
+// import rutas from './rutas/rutas.js';
+import router from './routes/model.routes.js'
 import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
 app.use(cors())
-app.use("/", rutas)
+app.use("/", router)
 
 
 const PORT = process.env.PORT || 3000;
