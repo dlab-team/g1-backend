@@ -10,7 +10,7 @@ actualizarUsuario
 const router = express.Router();
 
 router.get('/usuario/:id',usuariosLog,verUsuario)
-router.get('/admin/usuarios',usuariosLog,verTodoLosUsuarios)
+router.get('/usuario/listado',usuariosLog,verTodoLosUsuarios)
 router.post('/usuario/newUsuario',usuariosLog,agregarUsuario)
 router.patch('/usuario/update/:id',usuariosLog,actualizarUsuario)
 
