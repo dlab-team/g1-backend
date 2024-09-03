@@ -1,6 +1,7 @@
 import express from 'express';
 import chalk from 'chalk';
-// import rutas from './routes/rutas.js'; cuando esté lista
+// import rutas from './rutas/rutas.js';
+
 import router from './routes/model.routes.js'
 import cors from 'cors';
 
