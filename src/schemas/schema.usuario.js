@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 nombre, apellido, correo, pais, educacion, cargo, experiencia, contraseña
 
-const usuarioSchema = object({
+const movieSchema = object({
     nombre: string({
      invalid_type_error: 'Nombre no es valido',
      required_error: 'Nombre es requerido',
@@ -56,7 +56,15 @@ const usuarioSchema = object({
     .regex(/[@$!%*?&#]/, "La contraseña debe contener al menos un carácter especial")
  })
 
- function validateUsuario (input) {
-    return usuarioSchema.safeParse(input)
+ function validateMovie (input) {
+    return movieSchema.safeParse(input)
 
  }
+ function validatePartialMovie (input) {
+   return movieSchema.partial().safeParse(input)
+ }
+
+export default {
+   validateMovie,
+   validatePartialMovie
+}

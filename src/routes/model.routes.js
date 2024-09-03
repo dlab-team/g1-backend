@@ -1,5 +1,6 @@
 import { Router } from 'express'
 // import { fetchAndSaveCountries } from '../controllers/model.controller.js'
+import { Router } from 'express';
 import { autorizacionUsuario, autorizacionAdmin } from '../middleware/middleware_verify.js'
 import * as empleos from '../controllers/empleos.controller.js'
 import { credenciales } from '../controllers/login.controller.js'
