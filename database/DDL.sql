@@ -79,6 +79,7 @@ CREATE TABLE actividades (
   nota TEXT,
   usuario_id BIGINT REFERENCES usuarios(id)
   completado BOOLEAN
+  is_deleted BOOLEAN
 );
 
 -- Tabla de roles
@@ -91,6 +92,7 @@ CREATE TABLE roles (
 CREATE TABLE empresas (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   nombre TEXT
+  is_deleted BOOLEAN
 );
 
 -- Tabla de objetivos

@@ -29,10 +29,10 @@ export const findObjetivo = async () =>{
 // Eliminar una Actividad Softdelete
 export const deleteActividad = async (id) => {
     try {
-        const query = `UPDATE empresas SET is_deleted = TRUE WHERE id= $1`;
+        const query = `UPDATE actvidades SET is_deleted = TRUE WHERE id= $1`;
         const values = [id];
         await pool.query(query, values);
-        return {message: 'Empresa marcada como eliminada exitosamente'};
+        return {message: 'Actvidad marcada como eliminada exitosamente'};
     } catch (error) {
         console.error("Error al realizar el soft delete", error);
         throw error; 
