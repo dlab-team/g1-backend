@@ -91,3 +91,23 @@ CREATE TABLE categorias (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   categoria TEXT  
 )
+
+-- Tabla de experiencias
+CREATE TABLE experiencia (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  titulo tipo VARCHAR(80),
+  descripcion TEXT,
+  desde DATE,
+  hasta DATE,
+  usuario_id BIGINT REFERENCES usuarios(id)
+)
+
+CREATE TABLE modalidad (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  modalidad TEXT  
+)
+
+CREATE TABLE ubicacion (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  ubicacion TEXT  
+)
