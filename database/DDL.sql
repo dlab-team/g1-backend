@@ -3,7 +3,7 @@ CREATE TABLE usuarios (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   nombre TEXT,
   apellido TEXT,
-  email TEXT,
+  correo TEXT,
   password TEXT,
   creado_en TIMESTAMP,
   pais TEXT,

@@ -8,7 +8,7 @@ import {
   obtenerUsuarioPorId, 
   obtenerTodoLosUsuarios, 
   actualizarUsuarioPorId 
-} from '../models/usuarios.models.js';  // importar aquí los métodos del modelo (arreglado)
+} from '../models/usuarios.models.js';  // importando aquí los métodos del modelo (arreglado)
 
 export const agregarUsuario = async (req, res) => {
   const validation = usuarioSchema.safeParse(req.body);
