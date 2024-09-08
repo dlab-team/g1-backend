@@ -1,6 +1,6 @@
-import { pool } from '../../database/config.js'; 
-import crypto from 'crypto'; 
-import bcrypt from 'bcryptjs'
+import pool from '../../database/config.js'
+import crypto from 'crypto'
+import bcrypt from 'bcrypt'
 
 //Crear un nuevo Usuario
 export const insertarUsuario = async (usuarioData) => {
@@ -48,8 +48,8 @@ export const obtenerTodoLosUsuarios = async () => {
 }
 
 
-//Actualizar datos por Usuario
-export const actualizarDatosPorId = async (id, usuarioData) => {
+//Actualizar datos por Usuario (nombre arreglado)
+export const actualizarUsuarioPorId = async (id, usuarioData) => {
     const query = `
     UPDATE Usuarios
     SET nombre = $2, apellido = $3, correo = $4, pais = $5, educacion = $6, cargo = $7, experiencia = $8
