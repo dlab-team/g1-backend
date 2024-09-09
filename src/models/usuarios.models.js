@@ -1,4 +1,4 @@
-import { pool } from '../../database/config.js'; 
+import pool from '../../database/config.js'; 
 import crypto from 'crypto'
 import bcrypt from 'bcryptjs'
 
