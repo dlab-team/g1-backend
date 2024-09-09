@@ -15,9 +15,3 @@ ALTER TABLE empresas ADD COLUMN is_deleted BOOLEAN DEFAULT FALSE;
 
 
 -- Añade datos de ejemplo:
-
-INSERT INTO paises (nombre) VALUES ('fantasilandia');
-INSERT INTO educacion (titulo) VALUES ('egresado');
-
-INSERT INTO usuarios (id, nombre, apellido, email, password, pais_id, educacion_id, rol_id)
-VALUES ('superid7', 'Juan', 'Pérez', 'juanperez@example.com', 'contraseña123', 1, 1, 2);
