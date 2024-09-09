@@ -1,5 +1,5 @@
 import { pool } from '../../database/config.js'; 
-import crypto from 'crypto'; 
+import crypto from 'crypto'
 import bcrypt from 'bcryptjs'
 
 //Crear un nuevo Usuario
