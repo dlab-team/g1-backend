@@ -4,6 +4,7 @@ import crypto from 'crypto';
 
 //Crear un nuevo Usuario
 export const insertarUsuario = async (usuarioData) => {
+  
     const id = crypto.randomUUID();
     const { nombre, apellido, correo, pais, educacion, cargo, experiencia, contraseña } = usuarioData;
   
@@ -49,6 +50,8 @@ export const obtenerTodoLosUsuarios = async () => {
 
 //Actualizar datos por Usuario
 export const actualizarDatosPorId = async (id, usuarioData) => {
+
+    const {nombre, apellido, correo, pais, educacion, cargo, experiencia} = usuarioData
     const query = `
     UPDATE Usuarios
     SET nombre = $2, apellido = $3, correo = $4, pais = $5, educacion = $6, cargo = $7, experiencia = $8
@@ -61,3 +64,18 @@ export const actualizarDatosPorId = async (id, usuarioData) => {
     const result = await pool.query(query, values)
     return result.rows[0];
 }
+
+//Actualizar contraseña
+export const actualizarContraseñaPorId = async (id, nuevaContraseña) => {
+  const query = `
+  UPDATE Usuarios
+  SET contraseña = $2
+  WHERE id = $1
+  RETURNING id, nombre, apellido, correo, pais, educacion, cargo, experiencia
+  `;
+
+  const values = [id, nuevaContraseña];
+
+  const result = await pool.query(query, values);
+  return result.rows[0];
+};

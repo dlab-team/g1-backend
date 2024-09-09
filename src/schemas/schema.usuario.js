@@ -1,20 +1,27 @@
 import { z } from 'zod'
 
 
-nombre, apellido, correo, pais, educacion, cargo, experiencia, contraseña
+export const contraseñaSchema = z.string()
+.min(8, "La contraseña debe tener al menos 8 caracteres")
+.max(20, "La contraseña no puede tener más de 20 caracteres")
+.regex(/[A-Z]/, "La contraseña debe contener al menos una letra mayúscula")
+.regex(/[a-z]/, "La contraseña debe contener al menos una letra minúscula")
+.regex(/[0-9]/, "La contraseña debe contener al menos un número")
+.regex(/[@$!%*?&#]/, "La contraseña debe contener al menos un carácter especial")
 
-const movieSchema = object({
-    nombre: string({
+
+export const usuarioSchema = z.object({
+    nombre: z.string({
      invalid_type_error: 'Nombre no es valido',
      required_error: 'Nombre es requerido',
     }),
-    apellido: string({
+    apellido: z.string({
      invalid_type_error: 'Apellido no es valido',
      required_error: 'Apellido es requerido',
     }),
-    correo: string().correo()({
-      invalid_type_error: 'Nombre no es valido',
-      required_error: 'Nombre es requerido',
+    correo: z.string().email()({
+      invalid_type_error: 'Correo no es valido',
+      required_error: 'Correo es requerido',
     }),
     pais: z.enum([
     'Estados Unidos',
@@ -47,24 +54,12 @@ const movieSchema = object({
     experiencia: z.enum([
 
     ]),
-    contraseña: z.string()
-    .min(8, "La contraseña debe tener al menos 8 caracteres")
-    .max(20, "La contraseña no puede tener más de 20 caracteres")
-    .regex(/[A-Z]/, "La contraseña debe contener al menos una letra mayúscula")
-    .regex(/[a-z]/, "La contraseña debe contener al menos una letra minúscula")
-    .regex(/[0-9]/, "La contraseña debe contener al menos un número")
-    .regex(/[@$!%*?&#]/, "La contraseña debe contener al menos un carácter especial")
+    contraseña: contraseñaSchema
  })
 
- function validateMovie (input) {
-    return movieSchema.safeParse(input)
+ export function validateUsuario (input) {
+    return usuarioSchema.safeParse(input)
 
  }
- function validatePartialMovie (input) {
-   return movieSchema.partial().safeParse(input)
- }
 
-export default {
-   validateMovie,
-   validatePartialMovie
-}
+
