@@ -1,4 +1,5 @@
 import data from './query.js'
+import crypto from 'crypto'
 
 // devuelve todos los empleos
 export const todosEmpleos = async () => {
@@ -34,9 +35,10 @@ export const empleoById = async (id) => {
 
 // inserta empleo
 export const insertEmpleo = async (data) => {
-    const { id, cargo, descripcion, ubicacion, modalidad, salario, nombreEmpresa, creadoEn, listaId, usuarioId } = data
+    const { cargo, descripcion, ubicacion, modalidad, salario, nombreEmpresa, listaId, usuarioId } = data
+    const id = crypto.randomUUID()
     try {
-        const consulta ='INSERT INTO empleos (id, cargo, descripcion, ubicacion, modalidad, salario, nombre_empresa, creado_en, lista_id, usuario_id);'
+        const consulta ='INSERT INTO empleos (id, cargo, descripcion, ubicacion, modalidad, salario, nombre_empresa, lista_id, usuario_id);'
         const values = [id, cargo, descripcion, ubicacion, modalidad, salario, nombreEmpresa, creadoEn, listaId, usuarioId]
        return await data(consulta, values)
     } catch (error) {

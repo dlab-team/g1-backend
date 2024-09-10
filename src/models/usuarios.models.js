@@ -1,27 +1,30 @@
-import { pool } from '../../database/config.js'; 
-import crypto from 'crypto'; 
+import pool from '../../database/config.js'
+import crypto from 'crypto'
+import bcrypt from 'bcrypt'
 
 
 //Crear un nuevo Usuario
 export const insertarUsuario = async (usuarioData) => {
   
     const id = crypto.randomUUID();
-    const { nombre, apellido, correo, pais, educacion, cargo, experiencia, contraseña } = usuarioData;
-  
+    const { firstName, lastName, email, country, education, jobTitles, experience, password } = usuarioData
+    const saltRounds = 10
+    const passwordEncriptada = await bcrypt.hash(password, saltRounds)
+
     const query = `
-      INSERT INTO Usuarios (id, nombre, apellido, correo, pais, educacion, cargo, experiencia, contraseña) 
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) 
+      INSERT INTO Usuarios (id, nombre, apellido, correo, pais, educacion, cargo, experiencia, password, rol_id) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
       RETURNING id, nombre, apellido, correo, pais, educacion, cargo, experiencia
     `;
   
-    const values = [id, nombre, apellido, correo, pais, educacion, cargo, experiencia, contraseña];
+    const values = [id, firstName, lastName, email, country, education, jobTitles, experience, passwordEncriptada, 2];
   
-    const result = await pool.query(query, values);
-    return result.rows[0];
+   await pool.query(query, values);
+    return true;
   };
 
 
-//Ver informacion como Usuario
+//Ver informacion como Usuario 
 export const obtenerUsuarioPorId = async (id) => {
     const query = `
       SELECT id, nombre, apellido, correo, pais, educacion, cargo, experiencia
@@ -48,10 +51,9 @@ export const obtenerTodoLosUsuarios = async () => {
 }
 
 
-//Actualizar datos por Usuario
+//Actualizar datos por Usuario (nombre arreglado)
 export const actualizarDatosPorId = async (id, usuarioData) => {
-
-    const {nombre, apellido, correo, pais, educacion, cargo, experiencia} = usuarioData
+  const {nombre, apellido, correo, pais, educacion, cargo, experiencia} = usuarioData
     const query = `
     UPDATE Usuarios
     SET nombre = $2, apellido = $3, correo = $4, pais = $5, educacion = $6, cargo = $7, experiencia = $8

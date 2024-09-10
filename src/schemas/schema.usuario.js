@@ -1,65 +1,31 @@
-import { z } from 'zod'
-
+import { z } from 'zod';
 
 export const contraseñaSchema = z.string()
-.min(8, "La contraseña debe tener al menos 8 caracteres")
+.min(8, { message: "La contraseña debe tener al menos 8 caracteres" })
 .max(20, "La contraseña no puede tener más de 20 caracteres")
-.regex(/[A-Z]/, "La contraseña debe contener al menos una letra mayúscula")
-.regex(/[a-z]/, "La contraseña debe contener al menos una letra minúscula")
-.regex(/[0-9]/, "La contraseña debe contener al menos un número")
-.regex(/[@$!%*?&#]/, "La contraseña debe contener al menos un carácter especial")
+.regex(/[A-Z]/, { message: "Debe contener al menos una letra mayúscula" })
+.regex(/[a-z]/, { message: "Debe contener al menos una letra minúscula" })
+.regex(/[0-9]/, { message: "Debe contener al menos un número" })
 
 
+// Esquema para la creación de usuarios a conversar
 export const usuarioSchema = z.object({
-    nombre: z.string({
-     invalid_type_error: 'Nombre no es valido',
-     required_error: 'Nombre es requerido',
-    }),
-    apellido: z.string({
-     invalid_type_error: 'Apellido no es valido',
-     required_error: 'Apellido es requerido',
-    }),
-    correo: z.string().email()({
-      invalid_type_error: 'Correo no es valido',
-      required_error: 'Correo es requerido',
-    }),
-    pais: z.enum([
-    'Estados Unidos',
-    'Canadá',
-    'México',
-    'Brasil',
-    'Reino Unido',
-    'Alemania',
-    'Francia',
-    'España',
-    'Italia',
-    'Australia',
-    'India',
-    'Japón',
-    'Chile',
-    'China',
-    'Rusia',
-    'Argentina',
-    'Sudáfrica',
-    'Nigeria',
-    'Egipto',
-    'Turquía'
-    ]),
-    educacion: z.enum([
-
-    ]),
-    cargo: z.enum([
-
-    ]),
-    experiencia: z.enum([
-
-    ]),
-    contraseña: contraseñaSchema
- })
+  firstName: z.string().min(1, { message: 'Nombre es requerido' }),
+  lastName: z.string().min(1, { message: 'Apellido es requerido' }),
+  email: z.string().email({ message: 'Correo no es válido' }),
+  country: z.enum(['Argentina', 'Venezuela', 'México', 'Chile', 'Perú', 'Bolivia', 'Paraguay', 'España', 'Colombia', 'Otro', 'Chile', 'Uruguay']),
+  education: z.enum(['Ingeniero de Sistemas', 'Analista de Sistemas', 'Ingeniero en Computación', 'Ingeniero Informático', 'Desarrollador Backend', 'Desarrollador Frontend', 'Desarrollador Fullstack', 'DevOps'], { message: 'Educación es requerida' }),
+  jobTitle: z.enum(['Desarrollador', 'Diseñador', 'Analista'], { message: 'Cargo es requerido' }),
+  experience: z.enum(['Trainee', 'Semi-Senior', 'Senior', 'Sin Experiencia'], { message: 'Experiencia es requerida' }),
+  password: contraseñaSchema
+})
+   
 
  export function validateUsuario (input) {
     return usuarioSchema.safeParse(input)
 
  }
+
+
 
 

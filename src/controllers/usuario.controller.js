@@ -12,7 +12,7 @@ export const agregarUsuario = async (req, res) => {
   
   const validation = validateUsuario(req.body);
   if (!validation.success) {
-    return res.status(400).json({error:JSON.parse(validation.error.message)});
+    return res.status(400).json({ error: validation.error.errors });
   }
 
   try {
@@ -27,27 +27,25 @@ export const agregarUsuario = async (req, res) => {
 export const verUsuario = async (req, res) => {
   const { id } = req.params;
 
-  try{
+  try {
     const usuario = await obtenerUsuarioPorId(id);
-    if(!usuario) {
-      return res.status(400).json({message: "Usuario no encontrado"})
+    if (!usuario) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
     }
     res.status(200).json(usuario);
-
   } catch (error) {
-    res.status(500).json({message: error.message})
+    res.status(500).json({ message: error.message });
   }
-}
-
+};
 
 export const verTodoLosUsuarios = async (req, res) => {
-  try{
+  try {
     const usuarios = await obtenerTodoLosUsuarios();
     res.status(200).json(usuarios);
-  } catch (error){
-    res.status(500).json({message: error.message})
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-}
+};
 
 
 export const actualizarUsuario = async (req,res) => {
@@ -68,7 +66,7 @@ export const actualizarUsuario = async (req,res) => {
     } catch (error) {
       res.status(500).json({message: error.message})
     }
-}
+};
 
 
 export const restaurarContraseña = async (req, res) => {
