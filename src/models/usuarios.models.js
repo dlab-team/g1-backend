@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt'
 //Crear un nuevo Usuario
 export const insertarUsuario = async (usuarioData) => {
     const id = crypto.randomUUID();
-    const { nombre, apellido, correo, pais, educacion, cargo, experiencia, password } = usuarioData
+    const { firstName, lastName, email, country, education, jobTitles, experience, password } = usuarioData
     const saltRounds = 10
     const passwordEncriptada = await bcrypt.hash(password, saltRounds)
 
@@ -16,10 +16,10 @@ export const insertarUsuario = async (usuarioData) => {
       RETURNING id, nombre, apellido, correo, pais, educacion, cargo, experiencia
     `;
   
-    const values = [id, nombre, apellido, correo, pais, educacion, cargo, experiencia, passwordEncriptada, 2];
+    const values = [id, firstName, lastName, email, country, education, jobTitles, experience, passwordEncriptada, 2];
   
-    const result = await pool.query(query, values);
-    return result.rows[0];
+   await pool.query(query, values);
+    return true;
   };
 
 
