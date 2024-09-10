@@ -1,4 +1,4 @@
-import data from './querys.js'
+import data from './query.js'
 import crypto from 'crypto'
 
 export const todosAplicacionesPorUsuario = async (id) => {
