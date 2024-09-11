@@ -9,7 +9,8 @@ import {
 agregarUsuario,
 verUsuario,
 verTodoLosUsuarios,
-actualizarUsuario 
+actualizarUsuario,
+restaurarContraseña  
 }  from "../controllers/controller.usuario.js"
 
 const router = Router()
@@ -33,5 +34,8 @@ router.get('/usuario/:id',usuariosLog,verUsuario)
 router.get('/usuario/listado',usuariosLog,verTodoLosUsuarios)
 router.post('/usuario/newUsuario',usuariosLog,agregarUsuario)
 router.patch('/usuario/update/:id',usuariosLog,actualizarUsuario)
+router.patch('/usuario/restore-password/:id', usuariosLog, restaurarContraseña);
 
 export default router
+
+
