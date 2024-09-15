@@ -9,12 +9,12 @@ CREATE TABLE usuarios (
   pais TEXT,
   educacion TEXT,
   foto TEXT,
+  cargo,
   experiencia TEXT,
   actualizado_al DATE,
   rol_id BIGINT REFERENCES roles(id),
   notas TEXT
 );
-
 
 -- Tabla de empleos con referencias a listas, renombres de columnas y cambios de estructura
 CREATE TABLE empleos (
