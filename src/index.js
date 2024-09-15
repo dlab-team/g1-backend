@@ -1,20 +1,18 @@
-import express from 'express';
-import chalk from 'chalk';
+import express from 'express'
+import chalk from 'chalk'
 // import rutas from './rutas/rutas.js';
 
 import router from './routes/model.routes.js'
-import cors from 'cors';
+import cors from 'cors'
 
-const app = express();
+const app = express()
 
-app.use(express.json());
+app.use(express.json())
 app.use(cors())
-app.use("/", router)
+app.use('/', router)
 
-
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
-  console.log(chalk.blue('        🔥  Server On 🔥'));
-  console.log(chalk.grey(`Click to open: ${chalk.underline(`http://localhost:${PORT}`)}`));
-});
-
+  console.log(chalk.blue('        🔥  Server On 🔥'))
+  console.log(chalk.grey(`Click to open: ${chalk.underline(`http://localhost:${PORT}`)}`))
+})
