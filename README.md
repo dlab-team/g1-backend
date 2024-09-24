@@ -31,6 +31,9 @@ Para ejecutar este proyecto, necesitarás agfegar las siguientes variables de en
 ##### SQL DATABASE: PSQL
 `DB_USER` , `DB_PASSWORD` , `DB_HOST` , `DB_PORT` , `DB_DATABASE`
 
+##### NODEMAILER
+`MAIL_HOST` , `MAIL_PORT` , `MAIL_USER` , `MAIL_PASSWORD`
+
 ##### Author
 
 ### Alejandro Villegas M
