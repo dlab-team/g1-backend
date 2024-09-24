@@ -18,6 +18,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.15",
     "pg": "^8.12.0",
     "swc-node": "^1.0.0",
