@@ -3,28 +3,18 @@ CREATE TABLE usuarios (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   nombre TEXT,
   apellido TEXT,
-  email TEXT,
+  correo TEXT,
   password TEXT,
   creado_en TIMESTAMP,
-  pais_id BIGINT REFERENCES paises(id),
-  educacion_id BIGINT REFERENCES educacion(id),
+  pais TEXT,
+  educacion TEXT,
   foto TEXT,
   experiencia TEXT,
   actualizado_al DATE,
   rol_id BIGINT REFERENCES roles(id),
   notas TEXT
 );
--- Tabla de países
-CREATE TABLE paises (
-  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  nombre TEXT
-);
 
--- Tabla de educación sin experiencia ni usuario_id
-CREATE TABLE educacion (
-  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  titulo TEXT
-);
 
 -- Tabla de empleos con referencias a listas, renombres de columnas y cambios de estructura
 CREATE TABLE empleos (
@@ -41,14 +31,6 @@ CREATE TABLE empleos (
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
--- Tabla de aplicaciones vinculando empleo con usuario
-CREATE TABLE aplicaciones (
-  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  empleo_id BIGINT REFERENCES empleos(id),
-  usuario_id BIGINT REFERENCES usuarios(id),
-  categoria_id BIGINT REFERENCES categorias(id),
-  fecha_aplicacion TIMESTAMP
-);
 
 -- Tabla de listas
 CREATE TABLE listas (
@@ -64,12 +46,14 @@ CREATE TABLE objetivos (
   estado BOOLEAN,
   descripcion TEXT,
   instrucciones TEXT,
+  cumplimiento INT,
+  fecha_creacion DATE,
   tipo VARCHAR,
   plazo DATE
   usuario_id BIGINT REFERENCES usuarios(id)
 );
 
--- Tabla de actividades con referencia a usuarios
+-- Tabla de actividades con referencia a usuarios (se actualiza)
 CREATE TABLE actividades (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   titulo TEXT,
@@ -78,6 +62,8 @@ CREATE TABLE actividades (
   fecha_fin DATE,
   nota TEXT,
   usuario_id BIGINT REFERENCES usuarios(id)
+  completado BOOLEAN
+  is_deleted BOOLEAN
 );
 
 -- Tabla de roles
@@ -90,21 +76,9 @@ CREATE TABLE roles (
 CREATE TABLE empresas (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   nombre TEXT
+  is_deleted BOOLEAN
 );
 
--- Tabla de objetivos
-
-CREATE TABLE objetivos (
-  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  nombre TEXT, 
-  descripcion TEXT,
-  intrucciones TEXT,
-  tipo VARCHAR(30),
-  cumplimiento INT,
-  fecha_creacion DATE,
-  estado BOOLEAN,
-  plazo TEXT
-);
 
 -- Tabla de participantes vinculados a un objetivo
 
@@ -119,4 +93,24 @@ CREATE TABLE participantes (
 CREATE TABLE categorias (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   categoria TEXT  
+)
+
+-- Tabla de experiencias
+CREATE TABLE experiencia (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  titulo tipo VARCHAR(80),
+  descripcion TEXT,
+  desde DATE,
+  hasta DATE,
+  usuario_id BIGINT REFERENCES usuarios(id)
+)
+
+CREATE TABLE modalidad (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  modalidad TEXT  
+)
+
+CREATE TABLE ubicacion (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  ubicacion TEXT  
 )
