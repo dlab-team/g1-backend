@@ -67,7 +67,6 @@ router.route('/actividades')
   .get(autorizacionUsuario, actividades.getActividadesPorId)
   .post(autorizacionUsuario, actividades.postInsertActividad)
   .delete(autorizacionUsuario, actividades.deleteActividad)
-
 /**
  * @swagger
  * /login:
@@ -82,7 +81,6 @@ router.route('/actividades')
  */
 router.route('/login')
   .post(usuariosLog, credenciales)
-
 /**
  * @swagger
  * /usuario/{id}:
@@ -171,4 +169,3 @@ router.patch('/usuario/update/:id', usuariosLog, actualizarUsuario)
 router.patch('/usuario/restore-password/:id', usuariosLog, restaurarContraseña);
 
 export default router;
-
