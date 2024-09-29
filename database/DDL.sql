@@ -11,6 +11,7 @@ CREATE TABLE usuarios (
   foto TEXT,
   cargo,
   experiencia TEXT,
+  fono TEXT,
   actualizado_al DATE,
   rol_id BIGINT REFERENCES roles(id),
   notas TEXT

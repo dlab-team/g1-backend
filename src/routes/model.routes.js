@@ -3,7 +3,7 @@ import { autorizacionUsuario, autorizacionAdmin } from '../middleware/middleware
 import * as empleos from '../controllers/empleos.controller.js'
 import * as actividades from '../controllers/actividades.controller.js'
 import { credenciales } from '../controllers/login.controller.js'
-import { usuariosLog } from "../middleware/usuarios.middelware.js";
+import { usuariosLog } from '../middleware/usuarios.middelware.js';
 import {
   agregarUsuario,
   verUsuario,
@@ -11,8 +11,8 @@ import {
   actualizarUsuario,
   restaurarContraseña,
   experiencieById,
-  agregarNuevaExperiencia  
-} from "../controllers/controller.usuario.js"
+  agregarNuevaExperiencia
+} from '../controllers/controller.usuario.js'
 
 const router = Router()
 
@@ -127,8 +127,8 @@ router.get('/usuario/listado', usuariosLog, verTodoLosUsuarios)
  *         description: Experiencia del usuario obtenida correctamente
  */
 router.route('/user/experience')
-.get(usuariosLog, experiencieById)
-.post(usuariosLog, agregarNuevaExperiencia)
+  .get(usuariosLog, experiencieById)
+  .post(usuariosLog, agregarNuevaExperiencia)
 /**
  * @swagger
  * /usuario/newUsuario:
@@ -181,6 +181,6 @@ router.patch('/usuario/update/:id', usuariosLog, actualizarUsuario)
  *       404:
  *         description: Usuario no encontrado
  */
-router.patch('/usuario/restore-password/:id', usuariosLog, restaurarContraseña);
+router.patch('/usuario/restore-password/:id', usuariosLog, restaurarContraseña)
 
-export default router;
+export default router

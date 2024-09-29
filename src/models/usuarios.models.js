@@ -24,7 +24,7 @@ export const insertarUsuario = async (usuarioData) => {
 // Ver informacion como Usuario
 export const obtenerUsuarioPorId = async (id) => {
   const query = `
-      SELECT id, nombre, apellido, correo, pais, educacion, cargo, experiencia
+      SELECT id, nombre, apellido, correo, pais, educacion, cargo, experiencia, fono
       FROM usuarios
       WHERE id = $1
     `
@@ -100,5 +100,5 @@ export const nuevaExperiencia = async (id, usuarioData) => {
 
   const values = [id, titulo, descripcion, desde, hasta]
 
-  await pool.query(query, values).then((result) => {if (result) return true})
+  await pool.query(query, values).then((result) => { if (result) return true })
 }
