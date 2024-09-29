@@ -24,7 +24,7 @@ export const insertarUsuario = async (usuarioData) => {
 // Ver informacion como Usuario
 export const obtenerUsuarioPorId = async (id) => {
   const query = `
-      SELECT id, nombre, apellido, correo, pais, educacion, cargo, experiencia, fono
+      SELECT id, nombre, apellido, correo, pais, educacion, cargo, experiencia, fono, rol_id
       FROM usuarios
       WHERE id = $1
     `
