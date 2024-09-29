@@ -9,7 +9,9 @@ import {
   verUsuario,
   verTodoLosUsuarios,
   actualizarUsuario,
-  restaurarContraseña  
+  restaurarContraseña,
+  experiencieById,
+  agregarNuevaExperiencia  
 } from "../controllers/controller.usuario.js"
 
 const router = Router()
@@ -114,6 +116,19 @@ router.get('/usuario/:id', usuariosLog, verUsuario)
  */
 router.get('/usuario/listado', usuariosLog, verTodoLosUsuarios)
 
+/**
+ * @swagger
+ * /usuario/exeriencia:
+ *   get:
+ *     summary: Obtiene la experiencia de un usuario para su perfil
+ *     tags: [Usuarios]
+ *     responses:
+ *       200:
+ *         description: Experiencia del usuario obtenida correctamente
+ */
+router.route('/user/experience')
+.get(usuariosLog, experiencieById)
+.post(usuariosLog, agregarNuevaExperiencia)
 /**
  * @swagger
  * /usuario/newUsuario:
