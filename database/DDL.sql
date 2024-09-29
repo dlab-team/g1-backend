@@ -4,6 +4,7 @@ CREATE TABLE usuarios (
   nombre TEXT,
   apellido TEXT,
   correo TEXT,
+  descripcion,
   password TEXT,
   creado_en TIMESTAMP,
   pais TEXT,

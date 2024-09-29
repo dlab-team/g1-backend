@@ -38,7 +38,7 @@ const router = Router()
  *       200:
  *         description: Empleo eliminado correctamente
  */
-router.route('/empleos')
+router.route('/jobs')
   .get(autorizacionUsuario, empleos.getEmpleosPorId)
   .post(autorizacionUsuario, empleos.postInsertEmpleos)
   .delete(autorizacionUsuario, empleos.deleteEmpleos)
@@ -65,7 +65,7 @@ router.route('/empleos')
  *       200:
  *         description: Actividad eliminada correctamente
  */
-router.route('/actividades')
+router.route('/activities')
   .get(autorizacionUsuario, actividades.getActividadesPorId)
   .post(autorizacionUsuario, actividades.postInsertActividad)
   .delete(autorizacionUsuario, actividades.deleteActividad)
@@ -102,7 +102,7 @@ router.route('/login')
  *       404:
  *         description: Usuario no encontrado
  */
-router.get('/usuario/:id', usuariosLog, verUsuario)
+router.get('/user/:id', usuariosLog, verUsuario)
 
 /**
  * @swagger
@@ -114,7 +114,7 @@ router.get('/usuario/:id', usuariosLog, verUsuario)
  *       200:
  *         description: Lista de usuarios obtenida correctamente
  */
-router.get('/usuario/listado', usuariosLog, verTodoLosUsuarios)
+router.get('/user/list', autorizacionAdmin, verTodoLosUsuarios)
 
 /**
  * @swagger
@@ -139,7 +139,7 @@ router.route('/user/experience')
  *       201:
  *         description: Usuario creado correctamente
  */
-router.post('/usuario/newUsuario', usuariosLog, agregarUsuario)
+router.post('/user/newUser', usuariosLog, agregarUsuario)
 
 /**
  * @swagger
@@ -160,7 +160,7 @@ router.post('/usuario/newUsuario', usuariosLog, agregarUsuario)
  *       404:
  *         description: Usuario no encontrado
  */
-router.patch('/usuario/update/:id', usuariosLog, actualizarUsuario)
+router.patch('/user/update/:id', usuariosLog, actualizarUsuario)
 
 /**
  * @swagger
@@ -181,6 +181,6 @@ router.patch('/usuario/update/:id', usuariosLog, actualizarUsuario)
  *       404:
  *         description: Usuario no encontrado
  */
-router.patch('/usuario/restore-password/:id', usuariosLog, restaurarContraseña)
+router.patch('/user/restore-password/:id', usuariosLog, restaurarContraseña)
 
 export default router
