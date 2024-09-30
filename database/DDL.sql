@@ -4,6 +4,7 @@ CREATE TABLE usuarios (
   nombre TEXT,
   apellido TEXT,
   correo TEXT,
+  descripcion,
   password TEXT,
   creado_en TIMESTAMP,
   pais TEXT,
@@ -11,6 +12,7 @@ CREATE TABLE usuarios (
   foto TEXT,
   cargo,
   experiencia TEXT,
+  fono TEXT,
   actualizado_al DATE,
   rol_id BIGINT REFERENCES roles(id),
   notas TEXT

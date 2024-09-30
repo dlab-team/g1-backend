@@ -1,4 +1,8 @@
-import jwt  from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+
+dotenv.config()
+
 const { JWT_SECRET, JWT_ADMIN } = process.env
 
 export const autorizacionUsuario = (req, res, next) => {

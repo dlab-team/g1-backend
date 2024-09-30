@@ -3,7 +3,9 @@ import {
   obtenerUsuarioPorId,
   obtenerTodoLosUsuarios,
   actualizarDatosPorId,
-  actualizarContraseñaPorId
+  actualizarContraseñaPorId,
+  obtenerExerienciaPorId,
+  nuevaExperiencia
 } from '../models/usuarios.models.js'
 import { contraseñaSchema, validateUsuario } from '../schemas/schema.usuario.js'
 
@@ -20,6 +22,8 @@ export const agregarUsuario = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+export const agregarNuevaExperiencia = async (req, res) => await nuevaExperiencia(req.body)
+.then((data) => res.status(201).json(data)).catch((error) => res.status(500).json({ message: error.message }))
 
 export const verUsuario = async (req, res) => {
   const { id } = req.params
@@ -35,6 +39,19 @@ export const verUsuario = async (req, res) => {
   }
 }
 
+export const experiencieById = async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const usuario = await obtenerExerienciaPorId(id)
+    if (!usuario) {
+      return res.status(404).json({ message: 'Experiencia no encontrada' })
+    }
+    res.status(200).json(usuario)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+}
 export const verTodoLosUsuarios = async (req, res) => {
   try {
     const usuarios = await obtenerTodoLosUsuarios()

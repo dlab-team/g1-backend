@@ -24,7 +24,7 @@ export const insertarUsuario = async (usuarioData) => {
 // Ver informacion como Usuario
 export const obtenerUsuarioPorId = async (id) => {
   const query = `
-      SELECT id, nombre, apellido, correo, pais, educacion, cargo, experiencia
+      SELECT id, nombre, apellido, correo, pais, educacion, cargo, experiencia, fono, rol_id, descripcion
       FROM usuarios
       WHERE id = $1
     `
@@ -74,4 +74,31 @@ export const actualizarContraseñaPorId = async (id, nuevaContraseña) => {
 
   const result = await pool.query(query, values)
   return result.rows[0]
+}
+
+// Obtener experiencia del usuario
+
+export const obtenerExerienciaPorId = async (id) => {
+  const query = `
+      SELECT id, titulo, descripcion, desde, hasta
+      FROM experiencia
+      WHERE usuario_id = $1
+    `
+
+  const values = [id]
+
+  const result = await pool.query(query, values)
+  return result.rows[0]
+}
+export const nuevaExperiencia = async (id, usuarioData) => {
+  const { titulo, descripcion, desde, hasta } = usuarioData
+
+  const query = `
+      INSERT INTO experiencia (usuario_id, titulo, descripcion, desde, hasta)
+      VALUES ($1, $2, $3, $4) 
+    `
+
+  const values = [id, titulo, descripcion, desde, hasta]
+
+  await pool.query(query, values).then((result) => { if (result) return true })
 }
