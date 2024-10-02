@@ -4,6 +4,7 @@ import * as empleos from '../controllers/empleos.controller.js'
 import * as actividades from '../controllers/actividades.controller.js'
 import { credenciales } from '../controllers/login.controller.js'
 import { usuariosLog } from '../middleware/usuarios.middelware.js'
+import { getMetrics } from '../controllers/metrics.controller.js'
 import {
   agregarUsuario,
   verUsuario,
@@ -69,6 +70,7 @@ router.route('/activities')
   .get(autorizacionUsuario, actividades.getActividadesPorId)
   .post(autorizacionUsuario, actividades.postInsertActividad)
   .delete(autorizacionUsuario, actividades.deleteActividad)
+
 /**
  * @swagger
  * /login:
@@ -83,6 +85,19 @@ router.route('/activities')
  */
 router.route('/login')
   .post(usuariosLog, credenciales)
+
+/**
+ * @swagger
+ * /metrics:
+ *   get:
+ *     summary: Obtiene métricas generales
+ *     tags: [Métricas]
+ *     responses:
+ *       200:
+ *         description: Métricas obtenidas correctamente
+ */
+router.get('/metrics', autorizacionUsuario, getMetrics)
+
 /**
  * @swagger
  * /usuario/{id}:
@@ -129,6 +144,7 @@ router.get('/user/list', autorizacionAdmin, verTodoLosUsuarios)
 router.route('/user/experience')
   .get(usuariosLog, experiencieById)
   .post(usuariosLog, agregarNuevaExperiencia)
+
 /**
  * @swagger
  * /usuario/newUsuario:
