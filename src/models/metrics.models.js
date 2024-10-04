@@ -1,4 +1,4 @@
-import { pool } from "../../database/config.js";
+import data from "./query.js";
 
 // Obtener datos de las métricas generales (Postulaciones, Entrevistas, Eventos)
 export const getMetricsData = async () => {

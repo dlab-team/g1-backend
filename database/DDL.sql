@@ -27,6 +27,7 @@ CREATE TABLE empleos (
   modalidad TEXT,
   salario TEXT,
   nombre_empresa TEXT,
+  URL_DATA TEXT,
   creado_en TIMESTAMP,
   lista_id BIGINT REFERENCES listas(id)
   usuario_id BIGINT
