@@ -32,9 +32,9 @@ export const empleoById = async (id) => {
 
 // inserta empleo
 export const insertEmpleo = async (datos) => {
-  const { title, companyName, url, location, jobType, description, user } = datos
+  const { title, companyName, url, location, jobType, description, user, list } = datos
   const consulta = 'INSERT INTO empleos (cargo, descripcion, ubicacion, modalidad, nombre_empresa, url, lista_id, usuario_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);'
-  const values = [title, description, location, jobType, companyName, url, 1, user]
+  const values = [title, description, location, jobType, companyName, url, list, user]
   await data(consulta, values)
   return true
 }
