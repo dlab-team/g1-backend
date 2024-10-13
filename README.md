@@ -41,3 +41,4 @@ Para ejecutar este proyecto, necesitarás agfegar las siguientes variables de en
 ### Johan Gonzalez
 ### Ronald Guerrero
 ### Esteban Olivares
+### Fernando Sepúlveda

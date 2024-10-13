@@ -17,7 +17,7 @@ export const nodemailerForm = async (req, res) => {
 
         const token = jwt.sign({ email: userData.email}, process.env.JWT_SECRET, {expiresIn: '24h'})
 
-        const resetLink = //colocar ruta
+        const resetLink = 'https://g1-frontend.netlify.app/login'
 
         await transporter.sendMail({
           from: `"Recuperación de Contraseña" <${process.env.MAIL_USER}>`,

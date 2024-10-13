@@ -1,5 +1,5 @@
 import {Router} from "express"
-import { nodemailerForm } from "../controllers/nodemailer.controller"
+import { nodemailerForm } from "../controllers/nodemailer.controller.js"
 
 const router = Router()
 
