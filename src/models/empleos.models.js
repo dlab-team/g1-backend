@@ -38,7 +38,13 @@ export const insertEmpleo = async (datos) => {
   await data(consulta, values)
   return true
 }
-
+export const putEmpleo = async (datos) => {
+  const { title, companyName, url, location, jobType, description, list, id } = datos
+  const consulta = 'UPDATE empleos SET cargo = $1, descripcion = $2, ubicacion = $3, modalidad = $4, nombre_empresa = $5, url = $6, lista_id = $7 WHERE id = $8)'
+  const values = [title, description, location, jobType, companyName, url, list, id]
+  await data(consulta, values)
+  return true
+}
 // borra empleo por id
 export const deleteEmpleo = async (id) => {
   try {

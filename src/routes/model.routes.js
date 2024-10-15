@@ -42,6 +42,7 @@ const router = Router()
 router.route('/jobs')
   .get(autorizacionUsuario, empleos.getEmpleosPorId)
   .post(autorizacionUsuario, empleos.postInsertEmpleos)
+  .put(autorizacionUsuario, empleos.putInsertEmpleos)
   .delete(autorizacionUsuario, empleos.deleteEmpleos)
 
 /**
