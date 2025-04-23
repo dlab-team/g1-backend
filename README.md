@@ -6,10 +6,10 @@
 ```
 
 Crear una API REST que permita:
-1. Autentucar Usuiario y/o Administrador
+1. Autenticar Usuario y/o Administrador
 2. CRUD de los Recursos 
 3. Paginación de los Recursos
-4. Visualizar Metricas de Recursos
+4. Visualizar Métricas de Recursos
 
 
 ## DESARROLLO
